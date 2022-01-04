@@ -63,3 +63,14 @@ button:hover {
   background-color: black;
   color: white;
 }
+
+.loading {
+  color: yellow;
+  animation: loading 500ms infinite;
+}
+
+@keyframes loading {
+  0% {color: yellow;}
+  50% {color: green;}
+  100% {color: blue;}
+}

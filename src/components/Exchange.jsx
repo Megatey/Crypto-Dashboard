@@ -1,6 +1,6 @@
 import React from 'react'
 import '../index.css'
-import { useState, } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Rate from './Rate'
 
@@ -17,9 +17,12 @@ const Exchange = () => {
         secondaryExchangecurrency: '',
         exchangeRate: 0
     })
+    const [loading, setLoading] = useState(false)
+    const [output, setOutput] = useState()
     // console.log(primaryChosenCurrency)
     // console.log(secondaryChosenCurrency)
     const convert = () => {
+        setLoading(true)
         var options = {
             method: 'GET',
             url: 'https://alpha-vantage.p.rapidapi.com/query',
@@ -31,6 +34,7 @@ const Exchange = () => {
         };
 
         axios.request(options).then((response) => {
+            setOutput(response.data)
             console.log(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate']);
             setResult(Math.floor(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate']) * amount)
             setExchangeRateData({
@@ -38,13 +42,20 @@ const Exchange = () => {
                 secondaryExchangecurrency: secondaryChosenCurrency,
                 exchangeRate: Math.floor(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate'])
             })
+
+
         }).catch((error) => {
             console.error(error);
-        });
+        }); 
     }
+
+    useEffect(() => {
+        output && setLoading(false)
+    }, [output])
 
     return (
         <div className="converter">
+        {loading && <h2 className='loading'>Loading.....</h2>}
             <h1>Currency Converter</h1>
             <div className="input-currency">
                 <table>
