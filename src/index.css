@@ -84,6 +84,7 @@ button:hover {
 
   .converter {
     max-width: 100%;
+    height: auto;
     /* box-sizing: border-box; */
   }
 
