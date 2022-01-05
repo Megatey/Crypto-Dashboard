@@ -78,11 +78,17 @@ button:hover {
 @media screen and (max-width: 872px) {
   .input-currency {
     max-width: 100%;
+    padding: 10px;
     /* box-sizing: border-box; */
   }
 
   .converter {
     max-width: 100%;
     /* box-sizing: border-box; */
+  }
+
+  .about {
+    height: auto;
+    padding: 10px;
   }
 }
