@@ -74,3 +74,15 @@ button:hover {
   50% {color: green;}
   100% {color: blue;}
 }
+
+@media screen and (max-width: 872px) {
+  .input-currency {
+    max-width: 100%;
+    /* box-sizing: border-box; */
+  }
+
+  .converter {
+    max-width: 100%;
+    /* box-sizing: border-box; */
+  }
+}

@@ -1,9 +1,10 @@
 import Exchange from "./components/Exchange"
+import './App.css'
 
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
         <Exchange/>
     </div>
   )
